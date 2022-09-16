@@ -1,0 +1,104 @@
+import java.util.Scanner;
+
+public class newmain {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        //input harga
+        float hargaNasi = 9999.99f;
+        float hargaAyam = 12345.67f;
+        float hargaSteak = 21108.40f;
+        float hargaSiram = 13579.13f;
+        float hargaKambing = 98765.43f;
+
+        //input data user
+        System.out.println("Selamat Siang...");
+        System.out.print("Pesan untuk berapa orang : ");
+        int jumlahOrang = scan.nextInt();
+        System.out.print("Pesanan atas nama : ");
+        String nama = scan.next();
+        System.out.println();
+
+        //input data
+        System.out.println("Menu Spesial hari ini :");
+        System.out.println("========================");
+        System.out.println("1. Nasi Goreng Spesial    @Rp " + hargaNasi);
+        System.out.println("2. Ayam Bakar Spesial     @Rp " + hargaAyam);
+        System.out.println("3. Steak Sirloin Spesial  @Rp " + hargaSteak);
+        System.out.println("4. Kwetiaw Siram Spesial  @Rp " + hargaSiram);
+        System.out.println("5. Kambing Guling Spesial @Rp " + hargaKambing);
+        System.out.println();
+
+        //pesan
+        System.out.println("Pesanan Anda [batas pesanan 0-10 porsi]");
+
+        float totalPorsi = 0;
+        float TotalPembelian = 0;
+
+        //pesanan tidak lebih dari 10
+        do {
+            totalPorsi = 0;
+            System.out.print("1. Nasi Goreng Special: ");
+            byte nasi = scan.nextByte();
+            System.out.print("2. Ayam Bakar Special: ");
+            byte ayam = scan.nextByte();
+            System.out.print("3. Steak Sirloin Special: ");
+            byte steak = scan.nextByte();
+            System.out.print("4. Kwetiaw Siram Spesial: ");
+            byte siram = scan.nextByte();
+            System.out.print("5. Kambing Guling Special: ");
+            byte kambing = scan.nextByte();
+            System.out.println();
+
+            totalPorsi = nasi + ayam + steak + siram + kambing;
+
+            //jika lebih dari 10
+            if(totalPorsi > 10){
+                System.out.println("Jumlah pesanan yang anda masukan tidak sesuai,\nMohon Masukan Kembali Pesanan Anda...");
+                continue;
+            }
+
+            //output data dari user
+            float totalnasi = nasi * hargaNasi;
+            float totalayam = ayam * hargaAyam;
+            float totalsteak = steak * hargaSteak;
+            float totalsiram = siram * hargaSiram;
+            float totalkambing = kambing * hargaKambing;
+            System.out.print("1. Nasi Goreng Spesial\t\t: " + nasi + " porsi * Rp " + hargaNasi + "\t\t= Rp. ");
+            System.out.printf("%.2f\n", totalnasi);
+            System.out.print("2. Ayam Bakar Spesial\t\t: " + ayam + " porsi * Rp " + hargaAyam + "\t\t= Rp. ");
+            System.out.printf("%.2f\n", totalayam);
+            System.out.print("3. Steak Sirloin Spesial\t: " + steak + " porsi * Rp " + hargaSteak + "\t\t= Rp. ");
+            System.out.printf("%.2f\n", totalsteak);
+            System.out.print("4. Kwetiaw Siram Spesial\t: " + siram + " porsi * Rp " + hargaSiram + "\t\t= Rp. ");
+            System.out.printf("%.2f\n", totalsiram);
+            System.out.print("5. Kambing Guling Spesial\t: " +kambing + " porsi * Rp " + hargaKambing + "\t\t= Rp. ");
+            System.out.printf("%.2f\n", totalkambing);
+            System.out.print("  +\n");
+            System.out.println("===============================================================================");
+            TotalPembelian = totalnasi + totalayam + totalsteak + totalsiram + totalkambing;
+
+
+            //jika lebih dari 10
+        } while(totalPorsi == 0 || totalPorsi > 10);
+
+        System.out.println("Total Pembelian\t\t\t\t\t\t\t\t\t\t\t= Rp. " + TotalPembelian);
+
+        //diskon
+        float diskon = TotalPembelian * 10/100;
+        System.out.println("Disc. 10% (Masa Promosi)\t\t\t\t\t\t\t\t= Rp. " + diskon + "  -");
+        System.out.println("===================================================================================");
+        float total = TotalPembelian - diskon;
+        System.out.println("Total harga setelah disc 10%\t\t\t\t\t\t\t= Rp. " + total);
+
+        //harga perorang
+        float orang = total / jumlahOrang;
+        System.out.print("Pembelian per orang (untuk " + jumlahOrang + " orang) \t\t\t\t\t= Rp. ");
+        System.out.printf("%.2f\n", orang);
+
+        //closing
+        System.out.println();
+        System.out.println("\t\t\tTerima kasiha atas kunjungan Anda...");
+        System.out.println("\t\t\t\t...tekan ENTER untuk keluar...");
+    }
+}
